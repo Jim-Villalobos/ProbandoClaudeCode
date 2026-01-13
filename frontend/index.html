@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cédula de Votación Electoral - ONPE Perú 2026</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header con logo ONPE -->
+        <header class="cedula-header">
+            <div class="header-content">
+                <div class="barcode">|||||||||||||||</div>
+                <div class="logo-onpe">
+                    <span class="onpe-text">ONPE</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Número de cédula -->
+        <div class="cedula-numero">
+            <span id="numeroCedula">186220 JG3988</span>
+        </div>
+
+        <!-- Grid principal con 5 columnas -->
+        <div class="cedula-grid">
+
+            <!-- COLUMNA 1: PRESIDENTES -->
+            <div class="columna" id="columna-presidente">
+                <div class="columna-header presidentes-header">
+                    <h2>PRESIDENTES</h2>
+                </div>
+                <div class="instrucciones">
+                    <p><strong>Marca solo una fórmula de candidatos</strong></p>
+                    <p class="small-text">Puedes marcar de esta manera:</p>
+                    <div class="ejemplo-marcas">
+                        <span class="marca-ejemplo">✓</span>
+                        <span class="marca-ejemplo">✗</span>
+                        <span class="marca-ejemplo">●</span>
+                    </div>
+                </div>
+                <div class="partidos-lista" id="presidentes-lista">
+                    <!-- Loader -->
+                    <div class="skeleton-loader">
+                        <div class="skeleton-item"></div>
+                        <div class="skeleton-item"></div>
+                        <div class="skeleton-item"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMNA 2: SENADORES NACIONAL -->
+            <div class="columna" id="columna-senador-nacional">
+                <div class="columna-header senadores-header">
+                    <h2>SENADORES</h2>
+                    <p class="subtitle">A NIVEL NACIONAL (DISTRITO ÚNICO)</p>
+                </div>
+                <div class="instrucciones">
+                    <p><strong>Marca el símbolo del partido político</strong></p>
+                    <p class="small-text">Opcionalmente, marca hasta 2 candidatos de tu preferencia del partido elegido</p>
+                </div>
+                <div class="partidos-lista" id="senador-nacional-lista">
+                    <div class="skeleton-loader">
+                        <div class="skeleton-item"></div>
+                        <div class="skeleton-item"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMNA 3: SENADORES REGIONAL -->
+            <div class="columna" id="columna-senador-regional">
+                <div class="columna-header senadores-header">
+                    <h2>SENADORES</h2>
+                    <p class="subtitle">A NIVEL REGIONAL (DISTRITO MÚLTIPLE)</p>
+                </div>
+                <div class="instrucciones">
+                    <p><strong>Marca el símbolo del partido político</strong></p>
+                    <p class="small-text">Opcionalmente, marca hasta 2 candidatos de tu preferencia del partido elegido</p>
+                </div>
+                <div class="partidos-lista" id="senador-regional-lista">
+                    <div class="skeleton-loader">
+                        <div class="skeleton-item"></div>
+                        <div class="skeleton-item"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMNA 4: DIPUTADOS -->
+            <div class="columna" id="columna-diputado">
+                <div class="columna-header diputados-header">
+                    <h2>DIPUTADOS</h2>
+                    <p class="subtitle">A NIVEL REGIONAL</p>
+                </div>
+                <div class="instrucciones">
+                    <p><strong>Marca el símbolo del partido político</strong></p>
+                    <p class="small-text">Opcionalmente, marca hasta 2 candidatos de tu preferencia del partido elegido</p>
+                </div>
+                <div class="partidos-lista" id="diputado-lista">
+                    <div class="skeleton-loader">
+                        <div class="skeleton-item"></div>
+                        <div class="skeleton-item"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMNA 5: PARLAMENTO ANDINO -->
+            <div class="columna" id="columna-parlamento">
+                <div class="columna-header parlamento-header">
+                    <h2>PARLAMENTO ANDINO</h2>
+                </div>
+                <div class="instrucciones">
+                    <p><strong>Marca el símbolo del partido político</strong></p>
+                    <p class="small-text">Opcionalmente, marca hasta 2 candidatos de tu preferencia del partido elegido</p>
+                </div>
+                <div class="partidos-lista" id="parlamento-lista">
+                    <div class="skeleton-loader">
+                        <div class="skeleton-item"></div>
+                        <div class="skeleton-item"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Panel de validación y estado -->
+        <div class="validation-panel" id="validationPanel">
+            <h3>Estado del Voto</h3>
+            <div class="validation-items">
+                <div class="validation-item" data-categoria="presidente">
+                    <span class="categoria-name">Presidente:</span>
+                    <span class="estado-badge" data-estado="blanco">En Blanco</span>
+                </div>
+                <div class="validation-item" data-categoria="senador-nacional">
+                    <span class="categoria-name">Senador Nacional:</span>
+                    <span class="estado-badge" data-estado="blanco">En Blanco</span>
+                </div>
+                <div class="validation-item" data-categoria="senador-regional">
+                    <span class="categoria-name">Senador Regional:</span>
+                    <span class="estado-badge" data-estado="blanco">En Blanco</span>
+                </div>
+                <div class="validation-item" data-categoria="diputado">
+                    <span class="categoria-name">Diputado:</span>
+                    <span class="estado-badge" data-estado="blanco">En Blanco</span>
+                </div>
+                <div class="validation-item" data-categoria="parlamento">
+                    <span class="categoria-name">Parlamento Andino:</span>
+                    <span class="estado-badge" data-estado="blanco">En Blanco</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="action-buttons">
+            <button class="btn btn-reset" id="btnReset">
+                <span>🔄</span> Limpiar Todo
+            </button>
+            <button class="btn btn-submit" id="btnSubmit">
+                <span>✓</span> Confirmar Voto
+            </button>
+        </div>
+
+        <!-- Footer con marca de agua -->
+        <footer class="cedula-footer">
+            <div class="footer-content">
+                <div class="universo">UNIVERSO</div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal de confirmación -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <h2>Confirmar Voto</h2>
+            <div id="modalSummary"></div>
+            <div class="modal-actions">
+                <button class="btn btn-cancel" id="btnCancelModal">Cancelar</button>
+                <button class="btn btn-confirm" id="btnConfirmSubmit">Confirmar y Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de resultado -->
+    <div class="modal" id="resultModal">
+        <div class="modal-content">
+            <h2 id="resultTitle">Voto Registrado</h2>
+            <p id="resultMessage"></p>
+            <button class="btn btn-primary" id="btnCloseResult">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Toast de notificaciones -->
+    <div class="toast" id="toast"></div>
+
+    <script src="js/api.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

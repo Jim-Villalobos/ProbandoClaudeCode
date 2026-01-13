@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_cors import CORS
 from flasgger import Swagger
 from config.config import config_by_name
@@ -12,12 +12,12 @@ def create_app(config_name=None):
     if config_name is None:
         config_name = os.getenv('FLASK_ENV', 'default')
 
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder='../frontend', static_url_path='')
     app.config.from_object(config_by_name[config_name])
 
     # Inicializar extensiones
     db.init_app(app)
-    CORS(app)
+    CORS(app)  # Habilitar CORS para todas las rutas
     Swagger(app, template=swagger_template, config=swagger_config)
 
     # Registrar blueprints
@@ -37,10 +37,15 @@ def create_app(config_name=None):
 
     @app.route('/')
     def index():
-        return {
-            'mensaje': 'API de Votación',
-            'documentacion': '/api/docs',
-            'version': '1.0.0'
-        }
+        return send_from_directory(app.static_folder, 'index.html')
+
+    @app.route('/cedula')
+    def cedula():
+        return send_from_directory(app.static_folder, 'index.html')
+
+    # Ruta para servir archivos estáticos
+    @app.route('/<path:path>')
+    def static_files(path):
+        return send_from_directory(app.static_folder, path)
 
     return app
